@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Skillpath</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+</head>
+<body>
+    
+    <header class="main-header">
+    <div class="header-content">
+        <a href="index.html" class="logo">Skillpath</a>
+        <nav class="main-nav" id="main-nav">
+
+        </nav>
+        <div class="theme-switcher">
+            <button id="theme-toggle-button">🌙</button>
+        </div>
+    </div>
+</header>
+
+    <main class="form-wrapper">  
+        <div class="form-container"> 
+            <h2>Welcome Back!</h2> 
+            <form id="login-form"> 
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+        
+                <button type="submit" class="btn-primary">Log In</button>
+            </form>
+            <div id="message-container" class="message"></div>
+            <p class="form-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+        </div>
+    </main>
+
+    <script src="assets/javascipt/auth.js"></script>
+</body>
+</html>

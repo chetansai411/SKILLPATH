@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Skillpath</title>
+   
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="stylesheet" href="assets/css/profile.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.2/dist/cal-heatmap.css">
+</head>
+<body>
+    <header class="main-header">
+    <div class="header-content">
+        <a href="index.html" class="logo">Skillpath</a>
+        <nav class="main-nav" id="main-nav">
+            <!-- Links will be inserted here by JavaScript -->
+        </nav>
+        <div class="theme-switcher">
+            <button id="theme-toggle-button">🌙</button>
+        </div>
+    </div>
+</header>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <img id="profile-avatar" src="assets/images/default-avatar.png" alt="User Avatar" class="avatar">
+            <div>
+                <h2 id="profile-fullName">Loading...</h2>
+                <p class="username">@<span id="profile-username"></span></p>
+                <p class="bio" id="profile-bio"></p>
+                <div class="social-links" id="profile-socials">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-stats">
+            <div class="stat-item">
+                <h3>Current Streak</h3>
+                <p>🔥 <span id="streak-current">0</span></p>
+            </div>
+            <div class="stat-item">
+                <h3>Longest Streak</h3>
+                <p>🏆 <span id="streak-longest">0</span></p>
+            </div>
+        </div>
+
+        <h3>Learning Activity</h3>
+        
+        <div id="cal-heatmap"></div>
+        <div id="cal-heatmap-legend"></div>
+        
+    </main>
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.2/dist/cal-heatmap.min.js"></script>
+
+    
+    <script src="assets/javascipt/main.js"></script> 
+    <script src="assets/javascipt/profile.js"></script>
+</body>
+</html>

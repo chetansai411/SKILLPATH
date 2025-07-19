@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson - Skillpath</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/lesson.css">
+</head>
+<body>
+   <header class="main-header">
+    <div class="header-content">
+        <a href="index.html" class="logo">Skillpath</a>
+        <nav class="main-nav" id="main-nav">
+            <!-- Links will be inserted here by JavaScript -->
+        </nav>
+        <div class="theme-switcher">
+            <button id="theme-toggle-button">🌙</button>
+        </div>
+    </div>
+</header>
+
+    <main class="lesson-container">
+        
+        <div class="video-content">
+            <h2 id="lesson-title">Loading Lesson...</h2>
+            
+           
+            <div id="youtube-player"></div>
+
+            <p id="lesson-description">Loading description...</p>
+            <button id="complete-lesson-btn" class="button-primary">Mark as Complete</button>
+            <hr style="margin: 40px 0;">
+
+<div class="qna-container">
+    <h3>Questions & Answers</h3>
+    
+    <form id="qna-form">
+        <textarea id="qna-input" placeholder="Have a question? Ask the community..." required></textarea>
+        <button type="submit" class="button-primary">Post Question</button>
+    </form>
+    
+    
+    <div id="qna-list">
+        <p>Loading questions...</p>
+    </div>
+</div>
+        </div>
+
+        
+        <div class="notes-panel">
+            <h3>My Notes</h3>
+            <form id="note-form">
+                <input type="text" id="note-input" placeholder="Add a note at the current time..." required>
+                <button type="submit">Add Note</button>
+            </form>
+            <ul id="notes-list">
+                
+            </ul>
+        </div>
+    </main>
+    <script src="https://www.youtube.com/iframe_api"></script> 
+    <script src="assets/javascipt/main.js"></script>
+    <script src="assets/javascipt/lesson.js"></script>
+</body>
+</html>

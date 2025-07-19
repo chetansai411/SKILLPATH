@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Skillpath</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">Skillpath Admin</a>
+            <nav class="main-nav" id="main-nav">
+                <!-- Nav is populated by main.js -->
+            </nav>
+            <div class="theme-switcher">
+                <button id="theme-toggle-button">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <h1>Content Management</h1>
+
+        <!-- Section for Creating New Content -->
+        <div class="form-section">
+            <div class="form-container">
+                <h2>Add New Domain</h2>
+                <form id="add-domain-form">
+                    <div class="form-group"><label for="name">Domain Name</label><input type="text" id="name" name="name" required></div>
+                    <div class="form-group"><label for="slug">URL Slug (e.g., 'data-science')</label><input type="text" id="slug" name="slug" required></div>
+                    <div class="form-group"><label for="description">Description</label><textarea id="description" name="description" rows="3" required></textarea></div>
+                    <div class="form-group"><label for="imageUrl">Image URL</label><input type="text" id="imageUrl" name="imageUrl" required></div>
+                    <button type="submit" class="button-primary">Create Domain</button>
+                </form>
+                <p class="form-message" id="domain-form-message"></p>
+            </div>
+            
+            <hr class="admin-divider">
+
+            <div class="form-container">
+                <h2>Add New Learning Path</h2>
+                <form id="add-path-form">
+                    <div class="form-group"><label for="path-title">Path Title</label><input type="text" id="path-title" name="path-title" required></div>
+                    <div class="form-group"><label for="path-description">Path Description</label><textarea id="path-description" name="path-description" rows="3" required></textarea></div>
+                    <div class="form-group"><label for="parent-domain">Parent Domain</label><select id="parent-domain" name="parent-domain" required><option value="">Loading domains...</option></select></div>
+                    <button type="submit" class="button-primary">Create Path</button>
+                </form>
+                <p class="form-message" id="path-form-message"></p>
+            </div>
+            
+            <hr class="admin-divider">
+
+            <div class="form-container">
+                <h2>Add New Lesson</h2>
+                <form id="add-lesson-form">
+                    <div class="form-group"><label for="lesson-title">Lesson Title</label><input type="text" id="lesson-title" name="lesson-title" required></div>
+                    <div class="form-group"><label for="yt-video-id">YouTube Video ID</label><input type="text" id="yt-video-id" name="yt-video-id" placeholder="e.g., M7lc1UVf-VE" required></div>
+                    <div class="form-group"><label for="lesson-order">Order</label><input type="number" id="lesson-order" name="lesson-order" min="1" value="1" required></div>
+                    <div class="form-group"><label for="parent-path">Parent Path</label><select id="parent-path" name="parent-path" required><option value="">Loading paths...</option></select></div>
+                    <button type="submit" class="button-primary">Create Lesson</button>
+                </form>
+                <p class="form-message" id="lesson-form-message"></p>
+            </div>
+        </div>
+
+        <!-- Section for Managing Existing Content -->
+        <div id="admin-content-container">
+            <hr class="admin-divider">
+            <div class="manage-container">
+                <h2>Manage Domains</h2>
+                <table class="admin-table">
+                    <thead><tr><th>Name</th><th>Slug</th><th>Actions</th></tr></thead>
+                    <tbody id="domains-table-body"></tbody>
+                </table>
+            </div>
+
+            <hr class="admin-divider">
+            <div class="manage-container">
+                <h2>Manage Paths</h2>
+                <table class="admin-table">
+                    <thead><tr><th>Path Title</th><th>Parent Domain</th><th>Actions</th></tr></thead>
+                    <tbody id="paths-table-body"></tbody>
+                </table>
+            </div>
+
+            <hr class="admin-divider">
+            <div class="manage-container">
+                <h2>Manage Lessons</h2>
+                <table class="admin-table">
+                    <thead><tr><th>Lesson Title</th><th>Parent Path</th><th>Order</th><th>Actions</th></tr></thead>
+                    <tbody id="lessons-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODALS (Hidden by default) -->
+    <div id="edit-domain-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <h3>Edit Domain</h3>
+            <form id="edit-domain-form">
+                <input type="hidden" id="edit-domain-id">
+                <div class="form-group"><label for="edit-domain-name">Domain Name</label><input type="text" id="edit-domain-name" required></div>
+                <div class="form-group"><label for="edit-domain-slug">URL Slug</label><input type="text" id="edit-domain-slug" required></div>
+                <div class="form-group"><label for="edit-domain-description">Description</label><textarea id="edit-domain-description" rows="3" required></textarea></div>
+                <div class="form-group"><label for="edit-domain-imageUrl">Image URL</label><input type="text" id="edit-domain-imageUrl" required></div>
+                <button type="submit" class="button-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="edit-path-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <h3>Edit Path</h3>
+            <form id="edit-path-form">
+                <input type="hidden" id="edit-path-id">
+                <div class="form-group"><label for="edit-path-title">Path Title</label><input type="text" id="edit-path-title" required></div>
+                <div class="form-group"><label for="edit-path-description">Path Description</label><textarea id="edit-path-description" rows="3" required></textarea></div>
+                <div class="form-group"><label for="edit-parent-domain">Parent Domain</label><select id="edit-parent-domain" required></select></div>
+                <button type="submit" class="button-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="edit-lesson-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <h3>Edit Lesson</h3>
+            <form id="edit-lesson-form">
+                <input type="hidden" id="edit-lesson-id">
+                <div class="form-group"><label for="edit-lesson-title">Lesson Title</label><input type="text" id="edit-lesson-title" required></div>
+                <div class="form-group"><label for="edit-yt-video-id">YouTube Video ID</label><input type="text" id="edit-yt-video-id" required></div>
+                <div class="form-group"><label for="edit-lesson-order">Order</label><input type="number" id="edit-lesson-order" min="1" required></div>
+                <div class="form-group"><label for="edit-parent-path">Parent Path</label><select id="edit-parent-path" required></select></div>
+                <button type="submit" class="button-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/javascipt/main.js"></script>
+    <script src="assets/javascipt/admin.js"></script>
+</body>
+</html>
